@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 public class Controller {
 
-    @GetMapping("test/")
+    @GetMapping("/test")
     public String getMethodName(@RequestParam String param) {
-        return new String();
+        return param;
     }
     
 
