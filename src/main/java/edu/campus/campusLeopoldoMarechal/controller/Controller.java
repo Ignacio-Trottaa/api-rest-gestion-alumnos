@@ -1,17 +1,35 @@
 package edu.campus.campusLeopoldoMarechal.controller;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import edu.campus.campusLeopoldoMarechal.model.Alumno;
+import edu.campus.campusLeopoldoMarechal.service.IAlumnoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 public class Controller {
 
-    @GetMapping("/test")
-    public String getMethodName(@RequestParam String param) {
-        return param;
+    @Autowired
+    private IAlumnoService injectAlumno;
+
+    @GetMapping("/alumnos/traer")
+    public List<Alumno> getAlumno() {
+        return injectAlumno.getAlumno();
     }
-    
+
+    @PostMapping("/alumnos/crear")
+    public String createAlumno(@RequestBody Alumno alumno) {
+
+        injectAlumno.saveAlumno(alumno);
+        return "Alumno creado correctamente";
+    }
+
+    @DeleteMapping("/alumnos/eliminar/{id}")
+    public String deleteAlumno(@PathVariable Long id) {
+        injectAlumno.deleteAlumno(id);
+        return "Alumno eliminado";
+    }
 
 }
