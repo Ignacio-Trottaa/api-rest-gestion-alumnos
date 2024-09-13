@@ -6,12 +6,16 @@ import edu.campus.campusLeopoldoMarechal.service.IAlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 import java.util.List;
 
-
-@RequestMapping("/api")
+@CrossOrigin(origins="http://localhost:5173")
 @RestController
+@RequestMapping("/api")
 public class Controller {
 
     @Autowired
@@ -32,12 +36,8 @@ public class Controller {
     public Alumno findAlumno(@PathVariable Long id) {
         return injectAlumno.findAlumno(id);
     }
-/* 
-    @DeleteMapping("/darBajaAlumno/{id}")
-    public ResponseEntity<Alumno> DarBajaEstudiante(@PathVariable Long id){
-        Alumno estudianteActual = alumnoRepository.findById(id).orElse(null);
-        estudianteActual.setEstado_estudiante(false);  
-        return ResponseEntity.ok(estudianteActual);
+    @PutMapping("/alumnos/{id}")
+    public Alumno updateAlumno(@PathVariable Long id, Alumno alumno){
+        return injectAlumno.updateAlumno(id, alumno);
     }
-*/
 }

@@ -7,8 +7,6 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.persistence.Table;
-import java.util.Date;
-import java.sql.*;
 
 @Getter
 @Setter
@@ -17,7 +15,7 @@ import java.sql.*;
 public class Alumno {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
@@ -91,6 +89,16 @@ public class Alumno {
         this.obra_social = obra_social;
         this.nombre_obra = nombre_obra;
         this.estado_estudiante = estado_estudiante;
+    }
+    //pongo sus getters porque sino hay un error en AlumnoService a la hora de llamar alumno.setTrabaja(alumnoRequest.getTrabaja());
+    public boolean getTrabaja() {
+        return trabaja;
+    }
+    public boolean getObra_social(){
+        return obra_social;
+    }
+    public boolean getEstado_estudiante(){
+        return estado_estudiante;
     }
 }
 

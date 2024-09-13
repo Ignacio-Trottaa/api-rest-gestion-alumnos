@@ -18,4 +18,6 @@ public interface IAlumnoService {
     //Metodo para encontrar un alumno
     public Alumno findAlumno(Long id);
 
+    //Metodo para actualizar un alumno
+    public Alumno updateAlumno(Long id,Alumno alumno);
 }
