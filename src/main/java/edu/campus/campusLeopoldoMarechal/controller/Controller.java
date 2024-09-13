@@ -20,24 +20,31 @@ public class Controller {
 
     @Autowired
     private IAlumnoService injectAlumno;
-   // private IAlumnoRepository alumnoRepository;
+    //private IAlumnoRepository alumnoRepository;
 
     @GetMapping("/alumnos")
     public List<Alumno> getAlumno() {
         return injectAlumno.getAlumno();
     }
 
-    @PostMapping("/alumnos/crear")
+    @PostMapping("/alumno/crear")
     public String createAlumno(@RequestBody Alumno alumno) {
         injectAlumno.saveAlumno(alumno);
         return "Alumno creado correctamente";
     }
-    @GetMapping("/alumnos/{id}")
+
+    @GetMapping("/alumno/{id}")
     public Alumno findAlumno(@PathVariable Long id) {
         return injectAlumno.findAlumno(id);
     }
-    @PutMapping("/alumnos/{id}")
-    public Alumno updateAlumno(@PathVariable Long id, Alumno alumno){
+
+    @PutMapping("/alumno/update/{id}")
+    public Alumno updateAlumno(@PathVariable Long id, @RequestBody Alumno alumno){
         return injectAlumno.updateAlumno(id, alumno);
+    }
+
+    @PutMapping("/alumno/baja/{id}")
+    public Alumno bajaAlumno(@PathVariable Long id, @RequestBody Alumno alumno){
+        return injectAlumno.bajaAlumno(id, alumno);
     }
 }

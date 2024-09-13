@@ -66,6 +66,13 @@ public class AlumnoService implements IAlumnoService{
             alumno.setNombre_obra(alumnoRequest.getNombre_obra());
             alumno.setEstado_estudiante(alumnoRequest.getEstado_estudiante());            
     return alumnoRepository.save(alumno);
-}
+    }
 
+    @Override
+    public Alumno bajaAlumno(Long id, Alumno alumnoRequest){
+        Alumno alumno=alumnoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + id));
+        alumno.setEstado_estudiante(false);
+        return alumnoRepository.save(alumno);
+    }
 }

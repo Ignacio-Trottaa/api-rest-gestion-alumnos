@@ -20,4 +20,7 @@ public interface IAlumnoService {
 
     //Metodo para actualizar un alumno
     public Alumno updateAlumno(Long id,Alumno alumno);
+
+    //Metodo para dar de baja alumno
+    public Alumno bajaAlumno(Long id,Alumno alumno);
 }
