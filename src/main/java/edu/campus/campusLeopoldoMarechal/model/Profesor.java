@@ -1,22 +1,18 @@
 package edu.campus.campusLeopoldoMarechal.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.Table;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "estudiantes")
-public class Alumno {
+@Table(name = "profesores")
+public class Profesor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +26,6 @@ public class Alumno {
     private String lugar_nac;
     private String estado_civil;
     private int cant_hijos;
-    private String familiares_acargo;
     private String direccion;
     private String numero;
     private String piso;
@@ -41,17 +36,8 @@ public class Alumno {
     private String tel_personal;
     private String correo_electronico;
     private String titulo;
-    private int anio_egreso;
-    private String institucion;
     private String distrito;
-    private String otros_estudios;
-    private boolean trabaja;
-    private String actividad;
     private String horario_inicio;
     private String horario_fin;
-    private boolean obra_social;
-    private String nombre_obra;
-    private boolean estado_estudiante;
 
 }
-
