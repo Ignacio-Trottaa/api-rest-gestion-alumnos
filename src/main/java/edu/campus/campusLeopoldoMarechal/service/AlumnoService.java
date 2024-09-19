@@ -4,7 +4,6 @@ import edu.campus.campusLeopoldoMarechal.model.Alumno;
 import edu.campus.campusLeopoldoMarechal.repository.IAlumnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

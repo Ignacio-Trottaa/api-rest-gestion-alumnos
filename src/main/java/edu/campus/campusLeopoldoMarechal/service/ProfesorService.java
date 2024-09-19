@@ -1,18 +1,20 @@
 package edu.campus.campusLeopoldoMarechal.service;
 
 import edu.campus.campusLeopoldoMarechal.model.Profesor;
+import edu.campus.campusLeopoldoMarechal.repository.IProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
 
+@Service
 public class ProfesorService implements IProfesorService {
 
     @Autowired
-    private IProfesorService profesorService;
+    private IProfesorRepository profesorRepository;
 
     @Override
     public List<Profesor> getProfesores() {
-        return List.of();
+        return profesorRepository.findAll();
     }
 
     @Override
