@@ -1,10 +1,7 @@
 # Usa la imagen de Amazon Corretto
 FROM amazoncorretto:17-alpine
 
-ARG JAR_FILE=target/spring_api-0.0.1.jar
-
-# Copia el archivo JAR desde el host al contenedor 
-COPY ${JAR_FILE} app_campus.jar
+COPY target/spring_api-0.0.1.jar java-app.jar
 
 # Expone el puerto 8080 para la comunicación de la aplicación 
 EXPOSE 8080
