@@ -1,0 +1,16 @@
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\BackendAPI.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\config\CorsConfig.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\controller\Controller.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Alumno.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Materias.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Profesor.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Rol.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\repository\IAlumnoRepository.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\repository\IMateriasRepository.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\repository\IProfesorRepository.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\service\AlumnoService.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\service\IAlumnoService.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\service\IMateriasService.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\service\IProfesorService.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\service\MateriasService.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\service\ProfesorService.java

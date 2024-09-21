@@ -1,0 +1,16 @@
+edu\campus\campusLeopoldoMarechal\service\IProfesorService.class
+edu\campus\campusLeopoldoMarechal\BackendAPI.class
+edu\campus\campusLeopoldoMarechal\service\IAlumnoService.class
+edu\campus\campusLeopoldoMarechal\service\ProfesorService.class
+edu\campus\campusLeopoldoMarechal\config\CorsConfig.class
+edu\campus\campusLeopoldoMarechal\model\Rol.class
+edu\campus\campusLeopoldoMarechal\model\Materias.class
+edu\campus\campusLeopoldoMarechal\model\Profesor.class
+edu\campus\campusLeopoldoMarechal\repository\IProfesorRepository.class
+edu\campus\campusLeopoldoMarechal\model\Alumno.class
+edu\campus\campusLeopoldoMarechal\controller\Controller.class
+edu\campus\campusLeopoldoMarechal\repository\IAlumnoRepository.class
+edu\campus\campusLeopoldoMarechal\service\MateriasService.class
+edu\campus\campusLeopoldoMarechal\repository\IMateriasRepository.class
+edu\campus\campusLeopoldoMarechal\service\AlumnoService.class
+edu\campus\campusLeopoldoMarechal\service\IMateriasService.class
