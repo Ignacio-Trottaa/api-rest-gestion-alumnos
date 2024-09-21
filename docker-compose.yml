@@ -4,9 +4,10 @@ services:
     ports:
       - "8080:8080"
     environment:
-      DB_URL: jdbc:postgresql://db_api:5432/test
-      DB_USERNAME: postgres
-      DB_PASSWORD: admin
+      environment:
+        - DATABASE_URL=jdbc:postgresql://db_api:5432/test
+        - DATABASE_USER=postgres
+        - DATABASE_PASSWORD=admin
     restart: always
     depends_on:
       - db_api
@@ -16,8 +17,9 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: admin
       POSTGRES_DB: test
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
     restart: always
     healthcheck:
       test: [ "CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-q", "-U", "postgres" ]
