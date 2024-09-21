@@ -10,7 +10,7 @@ public interface IMateriasService {
 
     public void saveMaterias(Materias materias);
 
-    public void findMaeria(Long id);
+    public void findMateria(Long id);
 
     public void updateMaterias(Long id, Materias materias);
 

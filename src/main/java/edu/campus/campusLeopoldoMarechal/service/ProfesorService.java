@@ -19,21 +19,22 @@ public class ProfesorService implements IProfesorService {
 
     @Override
     public void saveProfesor(Profesor profesor) {
+        profesorRepository.save(profesor);
 
     }
 
     @Override
     public Profesor findProfesor(Long id) {
-        return null;
+        return profesorRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void bajaProfesor(Long id, Profesor profesor) {
+        profesorRepository.delete(profesor);
     }
 
     @Override
     public Profesor updateProfesor(Long id, Profesor profesor) {
         return null;
-    }
-
-    @Override
-    public void bajaProfesor(Long id, Profesor profesor) {
-
     }
 }

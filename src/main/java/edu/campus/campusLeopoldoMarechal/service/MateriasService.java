@@ -1,6 +1,5 @@
 package edu.campus.campusLeopoldoMarechal.service;
 
-
 import edu.campus.campusLeopoldoMarechal.model.Materias;
 import edu.campus.campusLeopoldoMarechal.repository.IMateriasRepository;
 import java.util.List;
@@ -20,11 +19,18 @@ public class MateriasService implements IMateriasService {
 
     @Override
     public void saveMaterias(Materias materias) {
+        materiasRepository.save(materias);
 
     }
 
     @Override
-    public void findMaeria(Long id) {
+    public void findMateria(Long id) {
+        materiasRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteMateria(Long id, Materias materias) {
+        materiasRepository.delete(materias);
 
     }
 
@@ -33,8 +39,4 @@ public class MateriasService implements IMateriasService {
 
     }
 
-    @Override
-    public void deleteMateria(Long id, Materias materias) {
-
-    }
 }

@@ -1,8 +1,11 @@
 # Usa la imagen de Amazon Corretto
-FROM amazoncorretto:17
+FROM amazoncorretto:17-alpine
 
 # Define un argumento llamado JAR_FILE con el valor por defecto 'target/'
 ARG JAR_FILE=target/spring_api-0.0.1.jar
+
+# Ejecuta Maven para construir el proyecto y generar el archivo JAR
+RUN ./mvnw clean package -DskipTests
 
 # Copia el archivo JAR desde el host al contenedor
 COPY ${JAR_FILE} app_campus.jar
