@@ -1,18 +1,17 @@
 services:
   api_campus:
     build: .
-    #ports:
-    #  - "8080:8080"
+    ports:
+      - "8080:8080"
     environment:
-      environment:
-        - DATABASE_URL=jdbc:postgresql://postgres-db.c78uo800qa1y.us-east-1.rds.amazonaws.com:5432/postgre_campus
-        - DATABASE_USER=postgres
-        - DATABASE_PASSWORD=admin.1234!
+      - DATABASE_URL=jdbc:postgresql://postgres-db.c78uo800qa1y.us-east-1.rds.amazonaws.com:5432/postgre_campus
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=admin.1234!
     restart: always
     #depends_on:
     #  - db_api
 
-  #db_api:
+    #db_api:
     #image: postgres
     #ports:
     #  - "5432:5432"
@@ -22,6 +21,6 @@ services:
     #  POSTGRES_PASSWORD: admin
     #restart: always
     #healthcheck:
-      #test: [ "CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-q", "-U", "postgres" ]
-      #timeout: 10s
-      #retries: 10
+    #test: [ "CMD", "pg_isready", "-h", "localhost", "-p", "5432", "-q", "-U", "postgres" ]
+    #timeout: 10s
+    #retries: 10
