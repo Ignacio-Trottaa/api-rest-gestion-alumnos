@@ -1,6 +1,8 @@
 C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\BackendAPI.java
 C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\config\CorsConfig.java
-C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\controller\Controller.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\controller\ControllerAlumnos.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\controller\ControllerMaterias.java
+C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\controller\ControllerProfesores.java
 C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Alumno.java
 C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Materias.java
 C:\Trabajo\campus leopoldo\campusLeopoldoMarechal\src\main\java\edu\campus\campusLeopoldoMarechal\model\Profesor.java

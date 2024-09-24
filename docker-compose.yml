@@ -5,9 +5,9 @@ services:
     #  - "8080:8080"
     environment:
       environment:
-        - DATABASE_URL=jdbc:postgresql://dpg-croqmlbtq21c73b5du10-a.oregon-postgres.render.com:5432/test_fk23
-        - DATABASE_USER=admin
-        - DATABASE_PASSWORD=wYEgH7iDZcXBoSzR7ahip542nEt3sR61
+        - DATABASE_URL=jdbc:postgresql://postgres-db.c78uo800qa1y.us-east-1.rds.amazonaws.com:5432/postgre_campus
+        - DATABASE_USER=postgres
+        - DATABASE_PASSWORD=admin.1234!
     restart: always
     #depends_on:
     #  - db_api

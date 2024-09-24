@@ -14,5 +14,5 @@ public interface IProfesorService {
 
     public Profesor updateProfesor(Long id, Profesor profesor);
 
-    public void bajaProfesor(Long id, Profesor profesor);
+    public void bajaProfesor(Long id);
 }
