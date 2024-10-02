@@ -24,8 +24,8 @@ public class MateriasService implements IMateriasService {
     }
 
     @Override
-    public void findMateria(Long id) {
-        materiasRepository.findById(id).orElse(null);
+    public Materias findMateria(Long id) {
+        return materiasRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -35,8 +35,11 @@ public class MateriasService implements IMateriasService {
     }
 
     @Override
-    public void updateMaterias(Long id, Materias materias) {
-
+    public Materias updateMaterias(Long id, Materias materiaRequest) {
+        Materias materia = materiasRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Materia no encontrada con el id: " + id));
+        materia.setNombre(materiaRequest.getNombre());
+        materia.setDescripcion(materiaRequest.getNombre());
+        return materiasRepository.save(materia);
     }
-
 }

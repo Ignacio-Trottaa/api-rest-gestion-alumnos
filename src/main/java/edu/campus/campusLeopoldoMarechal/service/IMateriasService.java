@@ -10,9 +10,9 @@ public interface IMateriasService {
 
     public void saveMaterias(Materias materias);
 
-    public void findMateria(Long id);
+    public Materias findMateria(Long id);
 
-    public void updateMaterias(Long id, Materias materias);
+    public Materias updateMaterias(Long id, Materias materias);
 
     public void deleteMateria(Long id, Materias materias);
 }

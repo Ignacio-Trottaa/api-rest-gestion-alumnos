@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1")
 @AllArgsConstructor
 public class ControllerAlumnos {
 

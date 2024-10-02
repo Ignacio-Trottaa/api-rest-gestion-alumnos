@@ -18,7 +18,7 @@ import lombok.AllArgsConstructor;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1")
 @AllArgsConstructor
 public class ControllerProfesores {
 
