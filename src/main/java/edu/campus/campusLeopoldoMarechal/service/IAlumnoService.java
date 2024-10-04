@@ -6,20 +6,18 @@ import java.util.List;
 
 public interface IAlumnoService {
 
-    /*Interfaz para aplicar metodos crud a la clase alumno*/
+    // Metodo para traer todos los alumnos
+    public List<Alumno> findAll();
 
-    //Metodo para traer todos los alumnos
-    public List<Alumno> getAlumno();
+    // metodo para guardar un alumno
+    public void save(Alumno alumno);
 
-    //metodo para dar de alta un alumno
-    public void saveAlumno(Alumno alumno);
+    // Metodo para encontrar un alumno por su ID
+    public Alumno findById(Long id);
 
-    //Metodo para encontrar un alumno
-    public Alumno findAlumno(Long id);
+    // Metodo para actualizar un alumno
+    public Alumno update(Long id, Alumno alumno);
 
-    //Metodo para actualizar un alumno
-    public Alumno updateAlumno(Long id, Alumno alumno);
-
-    //Metodo para dar de baja alumno
-    public Alumno bajaAlumno(Long id, Alumno alumno);
+    // Metodo para dar de baja alumno (o cambiar su estado)
+    public Alumno deactivate(Long id);
 }

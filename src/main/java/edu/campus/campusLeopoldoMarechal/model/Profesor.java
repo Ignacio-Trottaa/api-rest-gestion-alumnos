@@ -25,7 +25,7 @@ public class Profesor {
     private String nombre;
     private String apellido;
     private int dni;
-    private String correo_electronico;
+    private String correoElectronico;
     private String materia;
 
 }

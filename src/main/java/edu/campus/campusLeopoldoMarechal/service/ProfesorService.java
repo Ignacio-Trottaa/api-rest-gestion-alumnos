@@ -13,34 +13,34 @@ public class ProfesorService implements IProfesorService {
     private IProfesorRepository profesorRepository;
 
     @Override
-    public List<Profesor> getProfesores() {
+    public List<Profesor> findAll() {
         return profesorRepository.findAll();
     }
 
     @Override
-    public void saveProfesor(Profesor profesor) {
+    public void save(Profesor profesor) {
         profesorRepository.save(profesor);
 
     }
 
     @Override
-    public Profesor findProfesor(Long id) {
+    public Profesor findById(Long id) {
         return profesorRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void bajaProfesor(Long id) {
+    public void delete(Long id) {
         profesorRepository.deleteById(id);
     }
 
     @Override
-    public Profesor updateProfesor(Long id, Profesor profesorRequest) {
+    public Profesor update(Long id, Profesor profesorRequest) {
         Profesor profesor = profesorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Profesor no encontrado con id: " + id));
         profesor.setNombre(profesorRequest.getNombre());
         profesor.setApellido(profesorRequest.getApellido());
         profesor.setDni(profesorRequest.getDni());
-        profesor.setCorreo_electronico(profesorRequest.getCorreo_electronico());
+        profesor.setCorreoElectronico(profesorRequest.getCorreoElectronico());
         profesor.setMateria(profesorRequest.getMateria());
         return profesorRepository.save(profesor);
     }

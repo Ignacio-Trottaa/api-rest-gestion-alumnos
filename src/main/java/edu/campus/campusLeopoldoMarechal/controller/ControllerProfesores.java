@@ -3,6 +3,8 @@ package edu.campus.campusLeopoldoMarechal.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,38 +20,41 @@ import lombok.AllArgsConstructor;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api")
 @AllArgsConstructor
 public class ControllerProfesores {
 
     @Autowired
-    private IProfesorService injectProfesores;
+    private IProfesorService profesorService;
 
     @GetMapping("/profesores")
-    public List<Profesor> getProfesores() {
-        return injectProfesores.getProfesores();
+    public ResponseEntity<List<Profesor>> findAllProfesor() {
+        List<Profesor> profesor = profesorService.findAll();
+        return ResponseEntity.ok(profesor);
     }
 
-    @PostMapping("/profesor/crear")
-    public String saveProfesor(@RequestBody Profesor profesor) {
-        injectProfesores.saveProfesor(profesor);
-        return "Profesor creado correctamente";
+    @PostMapping("/profesor/alta")
+    public ResponseEntity<String> saveProfesor(@RequestBody Profesor profesor) {
+        profesorService.save(profesor);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Profesor creado correctamente");
     }
 
     @GetMapping("/profesor/{id}")
-    public Profesor findProfesor(@PathVariable Long id) {
-        return injectProfesores.findProfesor(id);
+    public ResponseEntity<Profesor> findProfesorById(@PathVariable Long id) {
+        Profesor profesor = profesorService.findById(id);
+        return ResponseEntity.ok(profesor);
     }
 
-    @PutMapping("/profesor/update/{id}")
-    public Profesor updaeProfesor(@PathVariable Long id, @RequestBody Profesor profesor) {
-        return injectProfesores.updateProfesor(id, profesor);
-
+    @PutMapping("/profesor/actualizar/{id}")
+    public ResponseEntity<Profesor> updateProfesor(@PathVariable Long id, @RequestBody Profesor profesor) {
+        Profesor updateProfesor = profesorService.update(id, profesor);
+        return ResponseEntity.ok(updateProfesor);
     }
 
-    @DeleteMapping("profesor/baja/{id}")
-    public String bajaProfesor(@PathVariable Long id) {
-        injectProfesores.bajaProfesor(id);
-        return "Profesor dado de baja";
+    @DeleteMapping("profesor/eliminar/{id}")
+    public ResponseEntity<Profesor> deleteProfesor(@PathVariable Long id) {
+        Profesor deleteProfesor = profesorService.findById(id);
+        return ResponseEntity.ok(deleteProfesor);
+
     }
 }

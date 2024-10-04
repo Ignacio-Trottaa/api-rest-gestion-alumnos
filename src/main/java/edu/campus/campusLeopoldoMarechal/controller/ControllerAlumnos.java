@@ -5,6 +5,8 @@ import edu.campus.campusLeopoldoMarechal.service.IAlumnoService;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,36 +18,41 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api")
 @AllArgsConstructor
 public class ControllerAlumnos {
 
     @Autowired
-    private IAlumnoService injectAlumno;
+    private final IAlumnoService alumnoService;
 
     @GetMapping("/alumnos")
-    public List<Alumno> getAlumno() {
-        return injectAlumno.getAlumno();
+    public ResponseEntity<List<Alumno>> getAlumnos() {
+        List<Alumno> alumnos = alumnoService.findAll();
+        return ResponseEntity.ok(alumnos);
+
     }
 
-    @PostMapping("/alumno/crear")
-    public String createAlumno(@RequestBody Alumno alumno) {
-        injectAlumno.saveAlumno(alumno);
-        return "Alumno creado correctamente";
+    @PostMapping("/alumno/alta")
+    public ResponseEntity<String> createAlumno(@RequestBody Alumno alumno) {
+        alumnoService.save(alumno);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Alumno creado correctamente");
     }
 
     @GetMapping("/alumno/{id}")
-    public Alumno findAlumno(@PathVariable Long id) {
-        return injectAlumno.findAlumno(id);
+    public ResponseEntity<Alumno> findAlumno(@PathVariable Long id) {
+        Alumno alumno = alumnoService.findById(id);
+        return ResponseEntity.ok().body(alumno);
     }
 
-    @PutMapping("/alumno/update/{id}")
-    public Alumno updateAlumno(@PathVariable Long id, @RequestBody Alumno alumno) {
-        return injectAlumno.updateAlumno(id, alumno);
+    @PutMapping("/alumno/actualizar/{id}")
+    public ResponseEntity<Alumno> updateAlumno(@PathVariable Long id, @RequestBody Alumno alumno) {
+        Alumno updateAlumno = alumnoService.update(id, alumno);
+        return ResponseEntity.ok(updateAlumno);
     }
 
-    @PutMapping("/alumno/baja/{id}")
-    public Alumno bajaAlumno(@PathVariable Long id, @RequestBody Alumno alumno) {
-        return injectAlumno.bajaAlumno(id, alumno);
+    @PutMapping("/alumno/estado/{id}")
+    public ResponseEntity<Alumno> deactivateAlumno(@PathVariable Long id) {
+        Alumno deactivateAlumno = alumnoService.deactivate(id);
+        return ResponseEntity.ok(deactivateAlumno);
     }
 }

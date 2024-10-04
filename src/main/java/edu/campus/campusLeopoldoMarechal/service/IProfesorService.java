@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IProfesorService {
 
-    public List<Profesor> getProfesores();
+    public List<Profesor> findAll();
 
-    public void saveProfesor(Profesor profesor);
+    public void save(Profesor profesor);
 
-    public Profesor findProfesor(Long id);
+    public Profesor findById(Long id);
 
-    public Profesor updateProfesor(Long id, Profesor profesor);
+    public Profesor update(Long id, Profesor profesor);
 
-    public void bajaProfesor(Long id);
+    public void delete(Long id);
 }

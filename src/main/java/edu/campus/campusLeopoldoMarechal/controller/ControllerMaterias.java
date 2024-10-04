@@ -1,7 +1,7 @@
 package edu.campus.campusLeopoldoMarechal.controller;
 
-import edu.campus.campusLeopoldoMarechal.model.Materias;
-import edu.campus.campusLeopoldoMarechal.service.IMateriasService;
+import edu.campus.campusLeopoldoMarechal.model.Materia;
+import edu.campus.campusLeopoldoMarechal.service.IMateriaService;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,37 +17,37 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api")
 @AllArgsConstructor
 public class ControllerMaterias {
 
     @Autowired
-    private IMateriasService injectMateria;
+    private IMateriaService injectMateria;
 
     @GetMapping("/materias")
-    public List<Materias> getMaterias() {
-        return injectMateria.getMaterias();
+    public List<Materia> getMaterias() {
+        return injectMateria.findAll();
     }
 
-    @PostMapping("/materias/crear")
-    public String createMateria(@RequestBody Materias materias) {
-        injectMateria.saveMaterias(materias);
+    @PostMapping("/materia")
+    public String createMateria(@RequestBody Materia materias) {
+        injectMateria.save(materias);
         return "Materia creada correctamente";
     }
 
-    @GetMapping("/materias/{id}")
-    public Materias findMaterias(@PathVariable Long id) {
-        return injectMateria.findMateria(id);
+    @GetMapping("/materia/{id}")
+    public Materia findMaterias(@PathVariable Long id) {
+        return injectMateria.findById(id);
     }
 
-    @PutMapping("/materias/update/{id}")
-    public Materias updatMaterias(@PathVariable Long id, @RequestBody Materias materias) {
-        return injectMateria.updateMaterias(id, materias);
+    @PutMapping("/materia/{id}")
+    public Materia updatMaterias(@PathVariable Long id, @RequestBody Materia materias) {
+        return injectMateria.update(id, materias);
     }
 
-    @DeleteMapping("/materias/baja/{id}")
-    public String bajaMaterias(@PathVariable Long id, @RequestBody Materias materias) {
-        injectMateria.deleteMateria(id, materias);
+    @DeleteMapping("/materia/{id}")
+    public String bajaMaterias(@PathVariable Long id, @RequestBody Materia materias) {
+        injectMateria.delete(id, materias);
         return "Materia dada de baja";
     }
 

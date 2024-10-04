@@ -4,6 +4,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+
+import java.time.LocalDate;
+
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -26,31 +30,31 @@ public class Alumno {
     private String apellido;
     private int dni;
     private int edad;
-    private String fecha_nac;
-    private String lugar_nac;
-    private String estado_civil;
-    private int cant_hijos;
-    private String familiares_acargo;
+    private LocalDate fechaNacimiento;
+    private String lugarNacimiento;
+    private String estadoCivil;
+    private int cantidadHijos;
+    private String familiaresACargo;
     private String direccion;
     private String numero;
     private String piso;
-    private String depto;
+    private String departamento;
     private String localidad;
-    private String partido;
-    private String codigo_postal;
-    private String tel_personal;
-    private String correo_electronico;
+    private String codigoPostal;
+    private String telefonoPersonal;
+    @Email
+    private String correoElectronico;
     private String titulo;
-    private int anio_egreso;
+    private int anioEgreso;
     private String institucion;
-    private String distrito;
-    private String otros_estudios;
+    private String localidadInstitucion;
+    private String otrosEstudios;
     private boolean trabaja;
     private String actividad;
-    private String horario_inicio;
-    private String horario_fin;
-    private boolean obra_social;
-    private String nombre_obra;
-    private boolean estado_estudiante;
+    private String horarioInicio;
+    private String horarioFin;
+    private boolean obraSocial;
+    private String nombreObraSocial;
+    private boolean estadoEstudiante;
 
 }
