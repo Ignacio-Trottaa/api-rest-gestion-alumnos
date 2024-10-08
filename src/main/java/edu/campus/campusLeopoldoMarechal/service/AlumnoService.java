@@ -1,7 +1,10 @@
 package edu.campus.campusLeopoldoMarechal.service;
 
 import edu.campus.campusLeopoldoMarechal.model.Alumno;
+import edu.campus.campusLeopoldoMarechal.model.Materia;
 import edu.campus.campusLeopoldoMarechal.repository.IAlumnoRepository;
+import edu.campus.campusLeopoldoMarechal.repository.IMateriaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -11,6 +14,9 @@ public class AlumnoService implements IAlumnoService {
 
     @Autowired
     private IAlumnoRepository alumnoRepository;
+
+    @Autowired
+    private IMateriaRepository materiaRepository;
 
     @Override
     public List<Alumno> findAll() {
@@ -68,5 +74,31 @@ public class AlumnoService implements IAlumnoService {
                 .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + id));
         alumno.setEstadoEstudiante(false);
         return alumnoRepository.save(alumno);
+    }
+
+    public void inscribirAlumnoEnMateria(Long alumnoId, Long materiaId) {
+        Alumno alumno = alumnoRepository.findById(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + alumnoId));
+        Materia materia = materiaRepository.findById(materiaId)
+                .orElseThrow(() -> new RuntimeException("Materia no encontrada con id: " + materiaId));
+
+        materia.getAlumnos().add(alumno);
+        alumno.getMaterias().add(materia);
+
+        materiaRepository.save(materia);
+        alumnoRepository.save(alumno);
+    }
+
+    public void desinscribirAlumnoDeMateria(Long alumnoId, Long materiaId) {
+        Alumno alumno = alumnoRepository.findById(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + alumnoId));
+        Materia materia = materiaRepository.findById(materiaId)
+                .orElseThrow(() -> new RuntimeException("Materia no encontrada con id: " + materiaId));
+
+        materia.getAlumnos().remove(alumno);
+        alumno.getMaterias().remove(materia);
+
+        materiaRepository.save(materia);
+        alumnoRepository.save(alumno);
     }
 }
