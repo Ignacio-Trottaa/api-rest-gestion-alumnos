@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import edu.campus.campusLeopoldoMarechal.model.Comentarios;
-import edu.campus.campusLeopoldoMarechal.model.Publicacion;
 import edu.campus.campusLeopoldoMarechal.service.IComentariosService;
-import edu.campus.campusLeopoldoMarechal.service.PublicacionService;
 
 import lombok.AllArgsConstructor;
 

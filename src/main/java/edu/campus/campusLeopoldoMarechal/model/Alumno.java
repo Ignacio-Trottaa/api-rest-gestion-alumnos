@@ -12,8 +12,6 @@ import jakarta.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
