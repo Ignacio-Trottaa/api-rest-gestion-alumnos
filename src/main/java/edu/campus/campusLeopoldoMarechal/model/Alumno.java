@@ -12,6 +12,8 @@ import jakarta.validation.constraints.Email;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -27,6 +29,7 @@ import lombok.Setter;
 public class Alumno {
 
     @ManyToMany
+    //@JsonBackReference
     @JoinTable(name = "materia_alumno", joinColumns = @JoinColumn(name = "alumno_id"), inverseJoinColumns = @JoinColumn(name = "materia_id"))
     private List<Materia> materias;
 
@@ -37,7 +40,6 @@ public class Alumno {
     private String nombre;
     private String apellido;
     private int dni;
-    private int edad;
     private LocalDate fechaNacimiento;
     private String lugarNacimiento;
     private String estadoCivil;

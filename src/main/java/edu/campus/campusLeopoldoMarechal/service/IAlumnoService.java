@@ -20,4 +20,6 @@ public interface IAlumnoService {
 
     // Metodo para dar de baja alumno (o cambiar su estado)
     public Alumno deactivate(Long id);
+
+    public Alumno reintegrar(Long id);
 }

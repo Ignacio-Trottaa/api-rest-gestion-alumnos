@@ -76,12 +76,13 @@ public class AlumnoService implements IAlumnoService {
         return alumnoRepository.save(alumno);
     }
 
-    public void inscribirAlumnoEnMateria(Long alumnoId, Long materiaId) {
+    public void inscribirAlumnoEnMateria(Long alumnoId, String codigo) {
         Alumno alumno = alumnoRepository.findById(alumnoId)
                 .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + alumnoId));
-        Materia materia = materiaRepository.findById(materiaId)
-                .orElseThrow(() -> new RuntimeException("Materia no encontrada con id: " + materiaId));
-
+        Materia materia = materiaRepository.findByCodigo(codigo);
+        if(materia == null) {
+            throw new RuntimeException("Materia no encontrada con el codigo: " + codigo);
+        }
         materia.getAlumnos().add(alumno);
         alumno.getMaterias().add(materia);
 
@@ -100,5 +101,12 @@ public class AlumnoService implements IAlumnoService {
 
         materiaRepository.save(materia);
         alumnoRepository.save(alumno);
+    }
+    @Override
+    public Alumno reintegrar(Long id){
+        Alumno alumno = alumnoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + id));
+        alumno.setEstadoEstudiante(true);
+        return alumnoRepository.save(alumno);
     }
 }

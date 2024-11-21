@@ -1,8 +1,11 @@
 package edu.campus.campusLeopoldoMarechal.controller;
 
 import edu.campus.campusLeopoldoMarechal.model.Alumno;
+import edu.campus.campusLeopoldoMarechal.model.Materia;
 import edu.campus.campusLeopoldoMarechal.service.IAlumnoService;
 import java.util.List;
+import java.util.Optional;
+
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1")
 @AllArgsConstructor
 public class ControllerAlumnos {
 
@@ -54,5 +57,23 @@ public class ControllerAlumnos {
     public ResponseEntity<Alumno> deactivateAlumno(@PathVariable Long id) {
         Alumno deactivateAlumno = alumnoService.deactivate(id);
         return ResponseEntity.ok(deactivateAlumno);
+    }
+    @PutMapping("/alumno/reintegrar/{id}")
+    public ResponseEntity<Alumno> reintegrarAlumno(@PathVariable Long id) {
+        Alumno reintegrarAlumno = alumnoService.reintegrar(id);
+        return ResponseEntity.ok(reintegrarAlumno);
+    }
+
+    @GetMapping("/alumno/{id}/materias")
+    public ResponseEntity<List<Materia>> allMateriasByAlumno(@PathVariable Long id){
+        Optional<Alumno> alumnoOpt = Optional.ofNullable(alumnoService.findById(id));
+        
+        if (alumnoOpt.isPresent()) {
+            Alumno alumno = alumnoOpt.get();
+            List<Materia> materias = alumno.getMaterias();
+            return ResponseEntity.ok(materias);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

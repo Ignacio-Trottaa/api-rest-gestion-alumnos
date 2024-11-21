@@ -8,11 +8,13 @@ public interface IMateriaService {
 
     public List<Materia> findAll();
 
-    public void save(Materia materias);
+    public void save(Materia materias, Long profesorId);
 
     public Materia findById(Long id);
 
     public Materia update(Long id, Materia materias);
 
     public void delete(Long id, Materia materias);
+
+    public List<Materia> findMateriasByProfesorId(Long profesorId);
 }

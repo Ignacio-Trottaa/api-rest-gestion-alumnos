@@ -14,5 +14,7 @@ public interface IProfesorService {
 
     public Profesor update(Long id, Profesor profesor);
 
-    public void delete(Long id);
+    public Profesor deactivate(Long id);
+
+    public Profesor reintegrar(Long id);
 }

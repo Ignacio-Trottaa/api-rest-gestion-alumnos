@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import edu.campus.campusLeopoldoMarechal.service.AlumnoService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1")
 public class InscripcionController {
 
     @Autowired
     private AlumnoService alumnoService;
 
-    @PostMapping("/alumno/{alumnoId}/inscripcion/{materiaId}")
-    public ResponseEntity<String> inscribirAlumno(@PathVariable Long alumnoId, @PathVariable Long materiaId) {
-        alumnoService.inscribirAlumnoEnMateria(alumnoId, materiaId);
+    @PostMapping("/alumno/{alumnoId}/inscripcion/{codigo}")
+    public ResponseEntity<String> inscribirAlumno(@PathVariable Long alumnoId, @PathVariable String codigo) {
+        alumnoService.inscribirAlumnoEnMateria(alumnoId, codigo);
         return ResponseEntity.status(HttpStatus.OK).body("Alumno inscrito correctamente en la materia.");
     }
 

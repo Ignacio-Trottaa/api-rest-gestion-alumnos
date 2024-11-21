@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +19,7 @@ import lombok.AllArgsConstructor;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1")
 @AllArgsConstructor
 public class ControllerProfesores {
 
@@ -51,10 +50,14 @@ public class ControllerProfesores {
         return ResponseEntity.ok(updateProfesor);
     }
 
-    @DeleteMapping("profesor/eliminar/{id}")
+    @PutMapping("/profesor/eliminar/{id}")
     public ResponseEntity<Profesor> deleteProfesor(@PathVariable Long id) {
-        Profesor deleteProfesor = profesorService.findById(id);
-        return ResponseEntity.ok(deleteProfesor);
-
+        Profesor deactivateProfesor = profesorService.deactivate(id);
+        return ResponseEntity.ok(deactivateProfesor);
+    }
+    @PutMapping("/profesor/reintegrar/{id}")
+    public ResponseEntity<Profesor> reintegrarProfesor(@PathVariable Long id) {
+        Profesor reintegrarProfesor = profesorService.reintegrar(id);
+        return ResponseEntity.ok(reintegrarProfesor);
     }
 }

@@ -3,7 +3,14 @@ package edu.campus.campusLeopoldoMarechal.model;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -27,5 +34,12 @@ public class Profesor {
     private int dni;
     private String correoElectronico;
     private String materia;
+    private int telefono;
+    private boolean estadoProfesor;
+
+    @OneToMany(mappedBy = "profesor", cascade = CascadeType.ALL)
+    @JsonManagedReference("profesor-materia")
+    private List<Materia> materias;
+
 
 }

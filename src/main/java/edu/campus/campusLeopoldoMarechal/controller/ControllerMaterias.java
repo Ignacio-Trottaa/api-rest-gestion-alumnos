@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:5173")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/v1")
 @AllArgsConstructor
 public class ControllerMaterias {
 
@@ -30,14 +31,18 @@ public class ControllerMaterias {
     }
 
     @PostMapping("/materia")
-    public String createMateria(@RequestBody Materia materias) {
-        injectMateria.save(materias);
+    public String createMateria(@RequestBody Materia materias,@RequestParam("profesorId") Long profesorId) {
+        injectMateria.save(materias,profesorId);
         return "Materia creada correctamente";
     }
 
     @GetMapping("/materia/{id}")
     public Materia findMaterias(@PathVariable Long id) {
         return injectMateria.findById(id);
+    }
+    @GetMapping("/materias/profesor/{profesorId}")
+    public List<Materia> getMateriasByProfesor(@PathVariable Long profesorId) {
+        return injectMateria.findMateriasByProfesorId(profesorId);
     }
 
     @PutMapping("/materia/{id}")

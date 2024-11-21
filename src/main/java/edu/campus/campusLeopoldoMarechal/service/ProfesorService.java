@@ -29,8 +29,11 @@ public class ProfesorService implements IProfesorService {
     }
 
     @Override
-    public void delete(Long id) {
-        profesorRepository.deleteById(id);
+    public Profesor deactivate(Long id) {
+        Profesor profesor = profesorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + id));
+        profesor.setEstadoProfesor(false);
+        return profesorRepository.save(profesor);
     }
 
     @Override
@@ -42,6 +45,14 @@ public class ProfesorService implements IProfesorService {
         profesor.setDni(profesorRequest.getDni());
         profesor.setCorreoElectronico(profesorRequest.getCorreoElectronico());
         profesor.setMateria(profesorRequest.getMateria());
+        profesor.setTelefono(profesorRequest.getTelefono());
+        return profesorRepository.save(profesor);
+    }
+    @Override
+    public Profesor reintegrar(Long id) {
+        Profesor profesor = profesorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado con id: " + id));
+        profesor.setEstadoProfesor(true);
         return profesorRepository.save(profesor);
     }
 }
